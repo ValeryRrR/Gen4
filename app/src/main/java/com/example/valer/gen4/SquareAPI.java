@@ -8,6 +8,7 @@ import retrofit2.http.Query;
 
 
 public interface SquareAPI {
-    @GET("/api/get")
-    Call<List<PostModel>> getData(@Query("name") String resourceName, @Query("num") int count);
+    @GET("users/square/repos")
+    Call<List<PostModel>> getData();
+    //https://api.github.com/users/square/repos
 }

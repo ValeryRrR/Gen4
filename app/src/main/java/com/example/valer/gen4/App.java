@@ -7,14 +7,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class App extends Application {
     private static SquareAPI squareAPI;
-    private Retrofit retrofit;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.github.com/users/square/repos") //Базовая часть адреса
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://api.github.com/") //Базовая часть адреса
                 .addConverterFactory(GsonConverterFactory.create()) //Конвертер, необходимый для преобразования JSON'а в объекты
                 .build();
         squareAPI = retrofit.create(SquareAPI.class); //Создаем объект, при помощи которого будем выполнять запросы

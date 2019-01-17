@@ -8,14 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SquareNameAdapter extends RecyclerView.Adapter<SquareNameAdapter.ViewHolder> {
 
     private List<PostModel> posts;
 
-    public SquareNameAdapter(List<PostModel> posts) {
-        this.posts = posts;
+    public SquareNameAdapter() {
+        this.posts = new ArrayList<>();
     }
 
     @Override
@@ -25,8 +26,8 @@ public class SquareNameAdapter extends RecyclerView.Adapter<SquareNameAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        PostModel post = posts.get(position);
+    public void onBindViewHolder(ViewHolder holder, int index) {
+        PostModel post = posts.get(index);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             holder.post.setText(Html.fromHtml(post.getName(), Html.FROM_HTML_MODE_LEGACY));
         } else {
@@ -37,9 +38,14 @@ public class SquareNameAdapter extends RecyclerView.Adapter<SquareNameAdapter.Vi
 
     @Override
     public int getItemCount() {
-        if (posts == null)
-            return 0;
-        return posts.size();
+
+        int count = 0;
+
+        if (posts != null) {
+            count = posts.size();
+        }
+
+        return count;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -52,4 +58,12 @@ public class SquareNameAdapter extends RecyclerView.Adapter<SquareNameAdapter.Vi
             site = (TextView) itemView.findViewById(R.id.post_full_name_item);
         }
     }
+
+    public void updateNames(List<PostModel> postModelList){
+
+        posts.addAll(postModelList);
+        notifyDataSetChanged();
+
+    }
+
 }

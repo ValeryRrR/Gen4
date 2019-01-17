@@ -16,34 +16,26 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    List<PostModel> posts;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        posts = new ArrayList<>();
-
         recyclerView = (RecyclerView) findViewById(R.id.posts_recycle_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        SquareNameAdapter adapter = new SquareNameAdapter(posts);
+        final SquareNameAdapter adapter = new SquareNameAdapter();
         recyclerView.setAdapter(adapter);
 
-        try {
-            Response response = App.getApi().getData("bash", 50).execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        App.getApi().getData("bash", 50).enqueue(new Callback<List<PostModel>>() {
+
+        App.getApi().getData().enqueue(new Callback<List<PostModel>>() {
             @Override
             public void onResponse(Call<List<PostModel>> call, Response<List<PostModel>> response) {
-                posts.addAll(response.body());
-                recyclerView.getAdapter().notifyDataSetChanged();
+                adapter.updateNames(response.body());
             }
 
             @Override
