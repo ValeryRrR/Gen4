@@ -1,13 +1,14 @@
 package com.example.valer.gen4;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import com.example.valer.gen4.ui.DividerItemDecorator;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,8 +25,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = (RecyclerView) findViewById(R.id.posts_recycle_view);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
+
+        DividerItemDecorator dividerItemDecoration = new DividerItemDecorator(ContextCompat.getDrawable(this, R.drawable.divider));
+        recyclerView.addItemDecoration(dividerItemDecoration);
 
         final SquareNameAdapter adapter = new SquareNameAdapter();
         recyclerView.setAdapter(adapter);
