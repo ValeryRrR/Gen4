@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Gen4</string>
+    <string name="stars">stars: %1$d</string>
+    <string name="forks">forks: %1$d</string>
 </resources>

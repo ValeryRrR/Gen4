@@ -29,11 +29,12 @@ public class SquareNameAdapter extends RecyclerView.Adapter<SquareNameAdapter.Vi
     public void onBindViewHolder(ViewHolder holder, int index) {
         PostModel post = posts.get(index);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            holder.post.setText(Html.fromHtml(post.getName(), Html.FROM_HTML_MODE_LEGACY));
+            holder.post.setText(Html.fromHtml(post.getSquareName(), Html.FROM_HTML_MODE_LEGACY));
         } else {
-            holder.post.setText(Html.fromHtml(post.getName()));
+            holder.post.setText(Html.fromHtml(post.getSquareName()));
         }
-        holder.site.setText(post.getFullName());
+        holder.forks.setText(holder.forks.getContext().getString(R.string.forks, post.getForksCount()));
+        holder.stars.setText(holder.stars.getContext().getString(R.string.stars, post.getStargazersCount()));
     }
 
     @Override
@@ -50,12 +51,14 @@ public class SquareNameAdapter extends RecyclerView.Adapter<SquareNameAdapter.Vi
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView post;
-        TextView site;
+        TextView forks;
+        TextView stars;
 
         public ViewHolder(View itemView) {
             super(itemView);
             post = (TextView) itemView.findViewById(R.id.postname_item);
-            site = (TextView) itemView.findViewById(R.id.post_full_name_item);
+            forks = (TextView) itemView.findViewById(R.id.view_holder_forks);
+            stars = (TextView) itemView.findViewById(R.id.view_holder_stars);
         }
     }
 
