@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_margin="36dp"
+    >
+
+    <TextView
+        style="@style/TextAppearance.AppCompat.Display2"
+        tools:text="Repo #1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="18dp"/>
+    <TextView
+        style="@style/TextAppearance.AppCompat.Display1"
+        tools:text="Description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="18dp"/>
+    <Button
+        style="@style/AppTheme.Button"
+        tools:text="Description"
+        android:text="@string/commits"
+        android:layout_height="wrap_content"
+        android:padding="18dp"
+        android:layout_marginBottom="8dp"/>
+    <Button
+        style="@style/AppTheme.Button"
+        tools:text="Description"
+        android:text="@string/contributors"
+        android:layout_height="wrap_content"
+        android:padding="18dp"/>
+
+</LinearLayout>

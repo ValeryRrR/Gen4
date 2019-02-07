@@ -8,13 +8,16 @@
     </style>
 
     <style name="AppTheme.TextAppearance.Body1" parent="TextAppearance.AppCompat.Body1">
-        android:fontFamily="monospace"
         <item name="android:fontFamily">monospace</item>
-        <!--style for Body-->
     </style>
 
     <style name="AppTheme.TextAppearance.Subhead" parent="TextAppearance.AppCompat.Subhead">
       <item name="android:fontFamily">monospace</item>
+    </style>
+
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button" >
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:layout_width">150dp</item>
     </style>
 
 

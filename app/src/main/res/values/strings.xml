@@ -1,5 +1,11 @@
 <resources>
+    <!--Strings for fragment_square_name-->
     <string name="app_name">Gen4</string>
     <string name="stars">stars: %1$d</string>
     <string name="forks">forks: %1$d</string>
+
+    <!--Strings for square_repo_info-->
+    <string name="contributors">contributors</string>
+    <string name="commits">commits</string>
+
 </resources>

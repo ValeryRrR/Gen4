@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import java.util.List;
 public class SquareNameAdapter extends RecyclerView.Adapter<SquareNameAdapter.ViewHolder> {
 
     private List<PostModel> posts;
+    private IItemClickListener listener;
 
     public SquareNameAdapter() {
         this.posts = new ArrayList<>();
@@ -28,13 +30,8 @@ public class SquareNameAdapter extends RecyclerView.Adapter<SquareNameAdapter.Vi
     @Override
     public void onBindViewHolder(ViewHolder holder, int index) {
         PostModel post = posts.get(index);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            holder.post.setText(Html.fromHtml(post.getSquareName(), Html.FROM_HTML_MODE_LEGACY));
-        } else {
-            holder.post.setText(Html.fromHtml(post.getSquareName()));
-        }
-        holder.forks.setText(holder.forks.getContext().getString(R.string.forks, post.getForksCount()));
-        holder.stars.setText(holder.stars.getContext().getString(R.string.stars, post.getStargazersCount()));
+        holder.bind(post);
+        holder.setItemClickListener(listener);
     }
 
     @Override
@@ -49,16 +46,44 @@ public class SquareNameAdapter extends RecyclerView.Adapter<SquareNameAdapter.Vi
         return count;
     }
 
+    public void setOnClickListener(IItemClickListener listener) {
+        this.listener = listener;
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView post;
-        TextView forks;
-        TextView stars;
+        private PostModel model;
+        private TextView post;
+        private TextView forks;
+        private TextView stars;
 
         public ViewHolder(View itemView) {
             super(itemView);
             post = (TextView) itemView.findViewById(R.id.postname_item);
             forks = (TextView) itemView.findViewById(R.id.view_holder_forks);
             stars = (TextView) itemView.findViewById(R.id.view_holder_stars);
+        }
+
+
+        void bind(PostModel postModel) {
+            model = postModel;
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                post.setText(Html.fromHtml(postModel.getSquareName(), Html.FROM_HTML_MODE_LEGACY));
+            } else {
+                post.setText(Html.fromHtml(postModel.getSquareName()));
+            }
+            forks.setText(forks.getContext().getString(R.string.forks, postModel.getForksCount()));
+            stars.setText(stars.getContext().getString(R.string.stars, postModel.getStargazersCount()));
+        }
+
+        void setItemClickListener(final IItemClickListener listener) {
+            this.itemView.setOnClickListener(new OnClickListener()
+            {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(model);
+                }
+            });
         }
     }
 
@@ -69,4 +94,7 @@ public class SquareNameAdapter extends RecyclerView.Adapter<SquareNameAdapter.Vi
 
     }
 
+    interface IItemClickListener {
+        void onItemClick(PostModel model);
+    }
 }
