@@ -9,12 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.valer.gen4.R;
-
 public class RepoInfoFragment extends Fragment {
 
-    TextView repoName;
-    TextView description;
+    private TextView repoName;
+    private TextView description;
+    private PostModel mPostModel;
 
     public RepoInfoFragment(){
     }
@@ -32,5 +31,14 @@ public class RepoInfoFragment extends Fragment {
         repoName = view.findViewById(R.id.repoName);
         description = view.findViewById(R.id.description);
 
+        repoName.setText(mPostModel.getSquareName());
+        description.setText(mPostModel.getDescription());
+
+    }
+
+    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+       mPostModel = getArguments().getParcelable("post");
     }
 }

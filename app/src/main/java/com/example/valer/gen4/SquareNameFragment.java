@@ -53,6 +53,15 @@ public class SquareNameFragment extends Fragment {
             @Override
             public void onItemClick(PostModel model) {
 
+                RepoInfoFragment fragment = new RepoInfoFragment();
+
+                Bundle args = new Bundle();
+                args.putParcelable("post", model);
+                fragment.setArguments(args);
+
+
+                getFragmentManager().beginTransaction().replace(R.id.activity_main, fragment).commit();
+
             }
         };
         adapter.setOnClickListener(lidtener);
