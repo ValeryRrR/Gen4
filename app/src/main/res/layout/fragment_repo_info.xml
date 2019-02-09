@@ -8,29 +8,34 @@
     >
 
     <TextView
+        android:id="@+id/repoName"
         style="@style/TextAppearance.AppCompat.Display2"
         tools:text="Repo #1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="18dp"/>
     <TextView
+        android:id="@+id/description"
         style="@style/TextAppearance.AppCompat.Display1"
         tools:text="Description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="18dp"/>
     <Button
+        android:id="@+id/commits"
         style="@style/AppTheme.Button"
-        tools:text="Description"
+        tools:text="Commits"
         android:text="@string/commits"
         android:layout_height="wrap_content"
         android:padding="18dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_margin="16dp"/>
     <Button
+        android:id="@+id/contributors"
         style="@style/AppTheme.Button"
-        tools:text="Description"
+        tools:text="Contributors"
         android:text="@string/contributors"
         android:layout_height="wrap_content"
-        android:padding="18dp"/>
+        android:padding="18dp"
+        android:layout_margin="16dp"/>
 
 </LinearLayout>
