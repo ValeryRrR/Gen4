@@ -59,8 +59,7 @@ public class SquareNameFragment extends Fragment {
                 args.putParcelable("post", model);
                 fragment.setArguments(args);
 
-
-                getFragmentManager().beginTransaction().replace(R.id.activity_main, fragment).commit();
+                getFragmentManager().beginTransaction().replace(R.id.activity_main, fragment).addToBackStack(null).commit();
 
             }
         };
@@ -69,7 +68,7 @@ public class SquareNameFragment extends Fragment {
 
 
 
-        App.getApi().getData().enqueue(new Callback<List<PostModel>>() {
+        App.getApi().getRepos().enqueue(new Callback<List<PostModel>>() {
             @Override
             public void onResponse(@NonNull Call<List<PostModel>> call, @NonNull Response<List<PostModel>> response) {
                 adapter.updateNames(response.body());

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class RepoInfoFragment extends Fragment {
@@ -14,6 +15,7 @@ public class RepoInfoFragment extends Fragment {
     private TextView repoName;
     private TextView description;
     private PostModel mPostModel;
+    private Button commits;
 
     public RepoInfoFragment(){
     }
@@ -33,6 +35,8 @@ public class RepoInfoFragment extends Fragment {
 
         repoName.setText(mPostModel.getSquareName());
         description.setText(mPostModel.getDescription());
+
+        commits = view.findViewById(R.id.button_commits);
 
     }
 

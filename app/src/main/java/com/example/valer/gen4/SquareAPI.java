@@ -9,6 +9,8 @@ import retrofit2.http.Query;
 
 public interface SquareAPI {
     @GET("users/square/repos")
-    Call<List<PostModel>> getData();
+    Call<List<PostModel>> getRepos();
     //https://api.github.com/users/square/repos
+    @GET("repos/square/retrofit/commits")
+    Call<List<PostModel>> getCommits();
 }

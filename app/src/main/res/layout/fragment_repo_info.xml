@@ -27,7 +27,7 @@
         />
 
     <Button
-        android:id="@+id/commits"
+        android:id="@+id/button_commits"
         style="@style/AppTheme.Button"
         tools:text="Commits"
         android:text="@string/commits"
@@ -37,7 +37,7 @@
         />
 
     <Button
-        android:id="@+id/contributors"
+        android:id="@+id/button_contributors"
         style="@style/AppTheme.Button"
         tools:text="Contributors"
         android:text="@string/contributors"

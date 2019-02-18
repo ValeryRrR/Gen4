@@ -19,11 +19,15 @@ public class PostModel implements Parcelable {
     @SerializedName("description")
     private final String description;
 
-    public PostModel(String squareName, int stargazersCount, int forksCount, String description) {
+    @SerializedName("message")
+    private final String commit;
+
+    public PostModel(String squareName, int stargazersCount, int forksCount, String description, String commit) {
         this.description = description;
         this.squareName = squareName;
         this.stargazersCount = stargazersCount;
         this.forksCount = forksCount;
+        this.commit = commit;
     }
 
     protected PostModel(Parcel in) {
@@ -31,6 +35,7 @@ public class PostModel implements Parcelable {
         squareName = in.readString();
         stargazersCount = in.readInt();
         forksCount = in.readInt();
+        commit = in.readString();
     }
 
     public String getSquareName() {
@@ -49,6 +54,10 @@ public class PostModel implements Parcelable {
         return description;
     }
 
+    public String getCommit() {
+        return commit;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -60,6 +69,7 @@ public class PostModel implements Parcelable {
         dest.writeString(squareName);
         dest.writeInt(stargazersCount);
         dest.writeInt(forksCount);
+        dest.writeString(commit);
     }
 
     public static final Creator<PostModel> CREATOR = new Creator<PostModel>()
