@@ -1,5 +1,6 @@
 package com.example.valer.gen4;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,9 +11,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.valer.gen4.ui.DividerItemDecorator;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CommitsFragment extends Fragment {
 
@@ -39,7 +46,23 @@ public class CommitsFragment extends Fragment {
         recyclerView.addItemDecoration(dividerItemDecoration);
 
         final CommitsAdapter commitsAdapter = new CommitsAdapter();
-
         recyclerView.setAdapter(commitsAdapter);
+
+
+        App.getApi().getCommits().enqueue(new Callback<List<PostModel>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<PostModel>> call, @NonNull Response<List<PostModel>> response) {
+                commitsAdapter.updateCommits(response.body());
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<PostModel>> call, @NonNull Throwable t) {
+                Context context = getContext();
+
+                if (context != null){
+                    Toast.makeText(context, "Error networking", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

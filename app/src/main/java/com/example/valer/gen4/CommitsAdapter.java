@@ -57,14 +57,12 @@ public class CommitsAdapter extends RecyclerView.Adapter<CommitsAdapter.ViewHold
 
         void bind(PostModel postModel) {
             model = postModel;
-/*
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                post.setText(Html.fromHtml(postModel.getSquareName(), Html.FROM_HTML_MODE_LEGACY));
+                post.setText(Html.fromHtml(postModel.getCommit(), Html.FROM_HTML_MODE_LEGACY));
             } else {
-                post.setText(Html.fromHtml(postModel.getSquareName()));
+                post.setText(Html.fromHtml(postModel.getCommit()));
             }
-            */
-           post.setText(postModel.getCommit());
+         //  post.setText(postModel.getCommit());
 
         }
 
@@ -77,6 +75,13 @@ public class CommitsAdapter extends RecyclerView.Adapter<CommitsAdapter.ViewHold
                 }
             });
         }
+    }
+
+    public void updateCommits(List<PostModel> postModelList){
+
+        posts.addAll(postModelList);
+        notifyDataSetChanged();
+
     }
 
     interface IItemClickListenerCommits {

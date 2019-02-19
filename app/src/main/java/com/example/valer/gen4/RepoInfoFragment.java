@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class RepoInfoFragment extends Fragment {
+public class RepoInfoFragment extends Fragment implements View.OnClickListener {
 
     private TextView repoName;
     private TextView description;
     private PostModel mPostModel;
-    private Button commits;
+    private Button buttonCommits;
 
     public RepoInfoFragment(){
     }
@@ -36,7 +36,8 @@ public class RepoInfoFragment extends Fragment {
         repoName.setText(mPostModel.getSquareName());
         description.setText(mPostModel.getDescription());
 
-        commits = view.findViewById(R.id.button_commits);
+        buttonCommits = view.findViewById(R.id.button_commits);
+        buttonCommits.setOnClickListener(this);
 
     }
 
@@ -44,5 +45,17 @@ public class RepoInfoFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
        mPostModel = getArguments().getParcelable("post");
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button_commits:
+                getFragmentManager().beginTransaction().replace(R.id.activity_main, new CommitsFragment()).addToBackStack(null).commit();
+                break;
+            case R.id.button_contributors:
+
+                break;
+        }
     }
 }
