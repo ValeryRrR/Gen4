@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.valer.gen4.Models.CommitModel;
+import com.example.valer.gen4.Models.PostModel;
 import com.example.valer.gen4.ui.DividerItemDecorator;
 
 import java.util.List;
@@ -25,6 +26,7 @@ import retrofit2.Response;
 public class CommitsFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    private PostModel mPostModel;
 
     public CommitsFragment(){
     }
@@ -50,7 +52,7 @@ public class CommitsFragment extends Fragment {
         recyclerView.setAdapter(commitsAdapter);
 
 
-        App.getApi().getCommits().enqueue(new Callback<List<CommitModel>>() {
+        App.getApi().getCommits(mPostModel.getSquareName()).enqueue(new Callback<List<CommitModel>>() {
             @Override
             public void onResponse(@NonNull Call<List<CommitModel>> call, @NonNull Response<List<CommitModel>> response) {
                 commitsAdapter.updateCommits(response.body());
@@ -65,5 +67,11 @@ public class CommitsFragment extends Fragment {
                 }
             }
         });
+    }
+
+    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        mPostModel = getArguments().getParcelable("post");
     }
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 
 public interface SquareAPI {
@@ -14,6 +15,6 @@ public interface SquareAPI {
     Call<List<PostModel>> getRepos();
     //https://api.github.com/users/square/repos
 
-    @GET("repos/square/retrofit/commits")
-    Call<List<CommitModel>> getCommits();
+    @GET("repos/square/{repoName}/commits")
+    Call<List<CommitModel>> getCommits(@Path("repoName") String repoName);
 }

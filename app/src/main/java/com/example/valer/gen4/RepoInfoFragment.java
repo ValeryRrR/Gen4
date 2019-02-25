@@ -53,8 +53,16 @@ public class RepoInfoFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button_commits:
-                getFragmentManager().beginTransaction().replace(R.id.activity_main, new CommitsFragment()).addToBackStack(null).commit();
+
+                CommitsFragment fragment = new CommitsFragment();
+
+                Bundle args = new Bundle();
+                args.putParcelable("post", mPostModel);
+                fragment.setArguments(args);
+
+                getFragmentManager().beginTransaction().replace(R.id.activity_main, fragment).addToBackStack(null).commit();
                 break;
+
             case R.id.button_contributors:
 
                 break;
