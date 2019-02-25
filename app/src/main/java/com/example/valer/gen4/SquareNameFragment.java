@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.valer.gen4.Models.PostModel;
 import com.example.valer.gen4.ui.DividerItemDecorator;
 
 import java.util.List;

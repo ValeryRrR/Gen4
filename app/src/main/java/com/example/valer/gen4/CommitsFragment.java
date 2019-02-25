@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.valer.gen4.Models.CommitModel;
 import com.example.valer.gen4.ui.DividerItemDecorator;
 
 import java.util.List;
@@ -49,14 +50,14 @@ public class CommitsFragment extends Fragment {
         recyclerView.setAdapter(commitsAdapter);
 
 
-        App.getApi().getCommits().enqueue(new Callback<List<PostModel>>() {
+        App.getApi().getCommits().enqueue(new Callback<List<CommitModel>>() {
             @Override
-            public void onResponse(@NonNull Call<List<PostModel>> call, @NonNull Response<List<PostModel>> response) {
+            public void onResponse(@NonNull Call<List<CommitModel>> call, @NonNull Response<List<CommitModel>> response) {
                 commitsAdapter.updateCommits(response.body());
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<PostModel>> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<CommitModel>> call, @NonNull Throwable t) {
                 Context context = getContext();
 
                 if (context != null){

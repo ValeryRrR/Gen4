@@ -10,6 +10,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.valer.gen4.Models.PostModel;
+
 import java.util.ArrayList;
 import java.util.List;
 

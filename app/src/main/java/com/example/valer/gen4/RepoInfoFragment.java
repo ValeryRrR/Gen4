@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.valer.gen4.Models.PostModel;
+
 public class RepoInfoFragment extends Fragment implements View.OnClickListener {
 
     private TextView repoName;

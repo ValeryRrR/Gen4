@@ -9,12 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.valer.gen4.Models.CommitModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CommitsAdapter extends RecyclerView.Adapter<CommitsAdapter.ViewHolder> {
 
-    private List<PostModel> posts;
+    private List<CommitModel> posts;
     private IItemClickListenerCommits listener;
 
     public CommitsAdapter(){ this.posts = new ArrayList<>(); }
@@ -28,7 +30,7 @@ public class CommitsAdapter extends RecyclerView.Adapter<CommitsAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int index) {
-        PostModel post = posts.get(index);
+        CommitModel post = posts.get(index);
         holder.bind(post);
         holder.setItemClickListener(listener);
     }
@@ -45,7 +47,7 @@ public class CommitsAdapter extends RecyclerView.Adapter<CommitsAdapter.ViewHold
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private PostModel model;
+        private CommitModel model;
         private TextView post;
 
 
@@ -55,12 +57,12 @@ public class CommitsAdapter extends RecyclerView.Adapter<CommitsAdapter.ViewHold
         }
 
 
-        void bind(PostModel postModel) {
-            model = postModel;
+        void bind(CommitModel commitModel) {
+            model = commitModel;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                post.setText(Html.fromHtml(postModel.getCommit(), Html.FROM_HTML_MODE_LEGACY));
+                post.setText(Html.fromHtml(commitModel.getCommit(), Html.FROM_HTML_MODE_LEGACY));
             } else {
-                post.setText(Html.fromHtml(postModel.getCommit()));
+                post.setText(Html.fromHtml(commitModel.getCommit()));
             }
          //  post.setText(postModel.getCommit());
 
@@ -77,7 +79,7 @@ public class CommitsAdapter extends RecyclerView.Adapter<CommitsAdapter.ViewHold
         }
     }
 
-    public void updateCommits(List<PostModel> postModelList){
+    public void updateCommits(List<CommitModel> postModelList){
 
         posts.addAll(postModelList);
         notifyDataSetChanged();
@@ -85,6 +87,6 @@ public class CommitsAdapter extends RecyclerView.Adapter<CommitsAdapter.ViewHold
     }
 
     interface IItemClickListenerCommits {
-        void onItemClick(PostModel model);
+        void onItemClick(CommitModel model);
     }
 }
