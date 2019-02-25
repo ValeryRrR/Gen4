@@ -7,11 +7,10 @@
 
     <TextView
         android:id="@+id/commit_item"
-        style="@style/TextAppearance.AppCompat.Display2"
-        tools:text="Commit #1"
+        style="@style/TextAppearance.AppCompat.Body1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="18dp"
-        />
+        tools:text="Commit #1" />
 
 </FrameLayout>
