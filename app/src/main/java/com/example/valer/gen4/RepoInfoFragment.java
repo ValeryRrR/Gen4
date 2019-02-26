@@ -18,6 +18,7 @@ public class RepoInfoFragment extends Fragment implements View.OnClickListener {
     private TextView description;
     private PostModel mPostModel;
     private Button buttonCommits;
+    private Button buttonContributors;
 
     public RepoInfoFragment(){
     }
@@ -40,6 +41,9 @@ public class RepoInfoFragment extends Fragment implements View.OnClickListener {
 
         buttonCommits = view.findViewById(R.id.button_commits);
         buttonCommits.setOnClickListener(this);
+
+        buttonContributors = view.findViewById(R.id.button_contributors);
+        buttonContributors.setOnClickListener(this);
 
     }
 
@@ -65,6 +69,13 @@ public class RepoInfoFragment extends Fragment implements View.OnClickListener {
 
             case R.id.button_contributors:
 
+                ContributorsFragment contributorsFragment = new ContributorsFragment();
+
+                Bundle argsContributors = new Bundle();
+                argsContributors.putParcelable("post", mPostModel);
+                contributorsFragment.setArguments(argsContributors);
+
+                getFragmentManager().beginTransaction().replace(R.id.activity_main, contributorsFragment).addToBackStack(null).commit();
                 break;
         }
     }

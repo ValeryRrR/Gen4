@@ -59,11 +59,8 @@ public class CommitsAdapter extends RecyclerView.Adapter<CommitsAdapter.ViewHold
 
         void bind(CommitModel commitModel) {
             model = commitModel;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-               post.setText(Html.fromHtml(commitModel.getCommits().getCommit(), Html.FROM_HTML_MODE_LEGACY));
-            } else {
-                post.setText(commitModel.getCommits().getCommit());
-            }
+
+            post.setText(commitModel.getCommits().getCommit());
          //  post.setText(postModel.getCommit());
 
         }

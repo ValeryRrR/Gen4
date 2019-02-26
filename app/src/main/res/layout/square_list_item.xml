@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +9,7 @@
     android:padding="16dp"
     android:orientation="vertical"
     >
+
 
     <TextView
         android:id="@+id/postname_item"
@@ -45,6 +48,7 @@
             android:layout_weight="1"
             />
 
-    </LinearLayout>
+         </LinearLayout>
+
 
 </LinearLayout>

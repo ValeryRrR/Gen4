@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.valer.gen4.Models.CommitModel;
+import com.example.valer.gen4.Models.ContributorsModel;
 import com.example.valer.gen4.Models.PostModel;
 import com.example.valer.gen4.ui.DividerItemDecorator;
 
@@ -23,40 +23,46 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CommitsFragment extends Fragment {
+public class ContributorsFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private PostModel mPostModel;
 
-    public CommitsFragment(){
+    public ContributorsFragment(){
+    }
+
+    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        mPostModel = getArguments().getParcelable("post");
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_commits, container, false);
+        return inflater.inflate(R.layout.fragment_contributors, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = view.findViewById(R.id.commits_recycle_view);
+        recyclerView = view.findViewById(R.id.contributors_recycle_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        final CommitsAdapter commitsAdapter = new CommitsAdapter();
-        recyclerView.setAdapter(commitsAdapter);
+        final ContributorsAdapter contributorsAdapter = new ContributorsAdapter();
+        recyclerView.setAdapter(contributorsAdapter);
 
 
-        App.getApi().getCommits(mPostModel.getSquareName()).enqueue(new Callback<List<CommitModel>>() {
+        App.getApi().getContributors(mPostModel.getSquareName()).enqueue(new Callback<List<ContributorsModel>>() {
             @Override
-            public void onResponse(@NonNull Call<List<CommitModel>> call, @NonNull Response<List<CommitModel>> response) {
-                commitsAdapter.updateCommits(response.body());
+            public void onResponse(@NonNull Call<List<ContributorsModel>> call, @NonNull Response<List<ContributorsModel>> response) {
+                contributorsAdapter.updateContributors(response.body());
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<CommitModel>> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<ContributorsModel>> call, @NonNull Throwable t) {
                 Context context = getContext();
 
                 if (context != null){
@@ -66,9 +72,4 @@ public class CommitsFragment extends Fragment {
         });
     }
 
-    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        mPostModel = getArguments().getParcelable("post");
-    }
 }

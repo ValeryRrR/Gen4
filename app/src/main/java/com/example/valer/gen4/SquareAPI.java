@@ -1,6 +1,7 @@
 package com.example.valer.gen4;
 
 import com.example.valer.gen4.Models.CommitModel;
+import com.example.valer.gen4.Models.ContributorsModel;
 import com.example.valer.gen4.Models.PostModel;
 
 import java.util.List;
@@ -17,4 +18,7 @@ public interface SquareAPI {
 
     @GET("repos/square/{repoName}/commits")
     Call<List<CommitModel>> getCommits(@Path("repoName") String repoName);
+
+    @GET("repos/square/{repoName}/contributors")
+    Call<List<ContributorsModel>> getContributors(@Path("repoName") String repoName);
 }
