@@ -21,7 +21,7 @@
             >
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imageViewAvatar"
                 android:tag="image_tag"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

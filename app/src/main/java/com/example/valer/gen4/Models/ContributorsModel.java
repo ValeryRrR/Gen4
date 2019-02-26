@@ -8,8 +8,17 @@ public class ContributorsModel {
     @SerializedName("login")
     private final String contributorLogin;
 
-    public ContributorsModel(String contributorLogin) {
+    @SerializedName("avatar_url")
+    private final String avatarUrl;
+
+
+    public ContributorsModel(String contributorLogin, String avatarUrl) {
         this.contributorLogin = contributorLogin;
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
     public String getContributorLogin() {

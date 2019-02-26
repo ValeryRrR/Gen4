@@ -7,9 +7,11 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.valer.gen4.Models.ContributorsModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,17 +52,21 @@ public class ContributorsAdapter extends RecyclerView.Adapter<ContributorsAdapte
     class ViewHolder extends RecyclerView.ViewHolder {
         private ContributorsModel model;
         private TextView post;
+        private ImageView imageViewAvatar;
 
 
         public ViewHolder(View itemView) {
             super(itemView);
             post = itemView.findViewById(R.id.textViewName);
+            imageViewAvatar = itemView.findViewById(R.id.imageViewAvatar);
         }
 
 
         void bind(ContributorsModel postModel) {
             model = postModel;
 
+            Picasso.with(itemView.getContext()).load(model.getAvatarUrl()).resize(150, 150).
+                    centerCrop().into(imageViewAvatar);
             post.setText(postModel.getContributorLogin());
 
         }
