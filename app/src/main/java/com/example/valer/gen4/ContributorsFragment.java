@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.valer.gen4.Models.ContributorsModel;
 import com.example.valer.gen4.Models.PostModel;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -25,10 +26,11 @@ public class ContributorsFragment extends Fragment {
     private RecyclerView recyclerView;
     private PostModel mPostModel;
 
-    public ContributorsFragment(){
+    public ContributorsFragment() {
     }
 
-    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mPostModel = getArguments().getParcelable("post");
@@ -62,7 +64,7 @@ public class ContributorsFragment extends Fragment {
             public void onFailure(@NonNull Call<List<ContributorsModel>> call, @NonNull Throwable t) {
                 Context context = getContext();
 
-                if (context != null){
+                if (context != null) {
                     Toast.makeText(context, "Error networking", Toast.LENGTH_SHORT).show();
                 }
             }

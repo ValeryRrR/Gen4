@@ -20,7 +20,7 @@ public class RepoInfoFragment extends Fragment implements View.OnClickListener {
     private Button buttonCommits;
     private Button buttonContributors;
 
-    public RepoInfoFragment(){
+    public RepoInfoFragment() {
     }
 
     @Nullable
@@ -47,10 +47,11 @@ public class RepoInfoFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       mPostModel = getArguments().getParcelable("post");
+        mPostModel = getArguments().getParcelable("post");
     }
 
     @Override

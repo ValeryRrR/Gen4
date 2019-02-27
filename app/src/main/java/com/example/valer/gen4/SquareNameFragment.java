@@ -27,7 +27,7 @@ public class SquareNameFragment extends Fragment {
 
     private RecyclerView recyclerView;
 
-    public SquareNameFragment(){
+    public SquareNameFragment() {
     }
 
     @Nullable
@@ -49,8 +49,7 @@ public class SquareNameFragment extends Fragment {
 
         final SquareNameAdapter adapter = new SquareNameAdapter();
 
-        SquareNameAdapter.IItemClickListener lidtener = new SquareNameAdapter.IItemClickListener()
-        {
+        SquareNameAdapter.IItemClickListener listener = new SquareNameAdapter.IItemClickListener() {
             @Override
             public void onItemClick(PostModel model) {
 
@@ -64,9 +63,8 @@ public class SquareNameFragment extends Fragment {
 
             }
         };
-        adapter.setOnClickListener(lidtener);
+        adapter.setOnClickListener(listener);
         recyclerView.setAdapter(adapter);
-
 
 
         App.getApi().getRepos().enqueue(new Callback<List<PostModel>>() {
@@ -79,7 +77,7 @@ public class SquareNameFragment extends Fragment {
             public void onFailure(@NonNull Call<List<PostModel>> call, @NonNull Throwable t) {
                 Context context = getContext();
 
-                if (context != null){
+                if (context != null) {
                     Toast.makeText(context, "Error networking", Toast.LENGTH_SHORT).show();
                 }
             }

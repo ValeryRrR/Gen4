@@ -20,7 +20,6 @@ public class PostModel implements Parcelable {
     private final String description;
 
 
-
     public PostModel(String squareName, int stargazersCount, int forksCount, String description, String commit) {
         this.description = description;
         this.squareName = squareName;
@@ -65,8 +64,7 @@ public class PostModel implements Parcelable {
         dest.writeInt(forksCount);
     }
 
-    public static final Creator<PostModel> CREATOR = new Creator<PostModel>()
-    {
+    public static final Creator<PostModel> CREATOR = new Creator<PostModel>() {
         @Override
         public PostModel createFromParcel(Parcel in) {
             return new PostModel(in);

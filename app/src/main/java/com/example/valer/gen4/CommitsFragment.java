@@ -28,7 +28,7 @@ public class CommitsFragment extends Fragment {
     private RecyclerView recyclerView;
     private PostModel mPostModel;
 
-    public CommitsFragment(){
+    public CommitsFragment() {
     }
 
     @Nullable
@@ -59,14 +59,15 @@ public class CommitsFragment extends Fragment {
             public void onFailure(@NonNull Call<List<CommitModel>> call, @NonNull Throwable t) {
                 Context context = getContext();
 
-                if (context != null){
+                if (context != null) {
                     Toast.makeText(context, "Error networking", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    @Override public void onCreate(@Nullable Bundle savedInstanceState) {
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mPostModel = getArguments().getParcelable("post");

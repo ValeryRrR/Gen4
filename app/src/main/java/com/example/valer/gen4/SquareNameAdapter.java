@@ -81,8 +81,7 @@ public class SquareNameAdapter extends RecyclerView.Adapter<SquareNameAdapter.Vi
         }
 
         void setItemClickListener(final IItemClickListener listener) {
-            this.itemView.setOnClickListener(new OnClickListener()
-            {
+            this.itemView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     listener.onItemClick(model);
@@ -91,7 +90,7 @@ public class SquareNameAdapter extends RecyclerView.Adapter<SquareNameAdapter.Vi
         }
     }
 
-    public void updateNames(List<PostModel> postModelList){
+    public void updateNames(List<PostModel> postModelList) {
 
         posts.addAll(postModelList);
         notifyDataSetChanged();

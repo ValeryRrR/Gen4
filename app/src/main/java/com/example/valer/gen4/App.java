@@ -13,10 +13,10 @@ public class App extends Application {
         super.onCreate();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.github.com/") //Базовая часть адреса
-                .addConverterFactory(GsonConverterFactory.create()) //Конвертер, необходимый для преобразования JSON'а в объекты
+                .baseUrl("https://api.github.com/")
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        squareAPI = retrofit.create(SquareAPI.class); //Создаем объект, при помощи которого будем выполнять запросы
+        squareAPI = retrofit.create(SquareAPI.class);
     }
 
     public static SquareAPI getApi() {

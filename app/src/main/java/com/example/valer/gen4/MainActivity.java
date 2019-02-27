@@ -20,14 +20,14 @@ public class MainActivity extends AppCompatActivity {
         addFragment(defaultFragment);
     }
 
-    public void replaceFragment(Fragment destFragment){
+    public void replaceFragment(Fragment destFragment) {
         FragmentManager fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.activity_main, destFragment);
         fragmentTransaction.commit();
     }
 
-    public void addFragment(Fragment fragment){
+    public void addFragment(Fragment fragment) {
         FragmentManager fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.activity_main, fragment);
